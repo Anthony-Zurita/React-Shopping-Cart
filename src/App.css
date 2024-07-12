@@ -45,11 +45,13 @@
 
 }
 
+/* to format the images to fit better to the screen */
 .products img{
   width: 100%;
   height: 75%;
 }
 
+/* to format the buttons make them larger and the text larger */
 button {
   font-size: 20px;
   padding: 10px

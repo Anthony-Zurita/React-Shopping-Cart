@@ -21,6 +21,14 @@ const inventory: CartItemType[] = [
   },
 ];
 
+/*
+    The ProductItemCard component takes one prop:
+    1. handleAddToCart: A function that takes a CartItemType object as an argument and returns void.
+    The ProductItemCard component returns a div element that contains a list of CartItemType objects that are iterated through using a map 
+    function.
+    The ProductItemCard component returns a div element that contains a list of CartItemType objects that are iterated through using a map
+    function.
+*/
 
 export default function ProductItemCard({handleAddToCart}: {handleAddToCart: (item: CartItemType) => void;}) {
   
