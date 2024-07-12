@@ -12,7 +12,7 @@ export default function CartItemCard( {handleRemoveFromCart, cart}: {handleRemov
 ) {
   return (
     <>
-      <h1>My Cart</h1>
+      <h1>My Cart ({cart.length})</h1>
       <div className="products">
         {cart.map((product, index) => (
           <div key={index}>

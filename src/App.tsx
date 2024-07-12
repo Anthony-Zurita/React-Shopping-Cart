@@ -3,6 +3,10 @@ import { useState } from "react";
 import "./App.css";
 import ProductItemCard from "./components/ProductItemCard";
 import CartItemCard from "./components/CartItemCard";
+import NavBar from "./components/NavBar";
+import Home from "./components/Home";
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 /*
   PRODUCTS_PAGE is a constant that stores the string "products".
@@ -86,14 +90,16 @@ function App() {
     Added logic to switch which page is shown based on the value of the page state.
   */
   return (
-    <div className="App">
-      <header>
-        <button onClick={() => navigateTo(CART_PAGE)}> Go to Cart ({cart.length})</button>
-        <button onClick={() => navigateTo(PRODUCTS_PAGE)}>Browse Products</button>
-      </header>
-      {page === PRODUCTS_PAGE && (<ProductItemCard handleAddToCart={handleAddToCart} />)}
-      {page === CART_PAGE && (<CartItemCard handleRemoveFromCart = {handleRemoveFromCart} cart = {cart}/>)}
+    <BrowserRouter>
+    <div className={"App"}>
+      <NavBar />
+      <Routes>
+        <Route path={"/"} element={<Home/>} />
+        <Route path={"/products"} element={<ProductItemCard handleAddToCart={handleAddToCart} />} />
+        <Route path={"/mycart"} element={<CartItemCard handleRemoveFromCart = {handleRemoveFromCart} cart = {cart}/>} />
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 
