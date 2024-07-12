@@ -37,7 +37,7 @@
   }
 }
 
-
+/* to format the products in a grid like fashion */
 .products{
   display: grid;
   grid-template-columns: 1fr 1fr;

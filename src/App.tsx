@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./App.css";
+import ProductItemCard from "./components/ProductItemCard";
 
 const PRODUCTS_PAGE = "products";
 const CART_PAGE = "cart";
@@ -14,28 +15,10 @@ export type CartItemType = {
   image: string;
 };
 
-/*
-  inventory is an array of CartItemType objects this data would usually be taken from an API call.
-*/
-const inventory: CartItemType[] = [
-  {
-    name: "Rechargable Lantern",
-    cost: "$25.99",
-    image: "https://m.media-amazon.com/images/I/71StlaTwNDL.jpg",
-  },
-
-  {
-    name: "Camping Tent",
-    cost: "$65.99",
-    image:
-      "https://m.media-amazon.com/images/I/71DPerT9EKL._AC_UF1000,1000_QL80_.jpg",
-  },
-];
-
 function App() {
+
   const [cart, setCart] = useState<CartItemType[]>([]);
   const [page, setPage] = useState("products");
-  const [products] = useState(inventory);
 
   /*
   This function takes a product object as an argument and adds it to the cart array.
@@ -56,27 +39,14 @@ function App() {
     setCart(cart.filter((product) => product !== productToBeRemoved));
   }
 
+  /*
+  This function takes a string as an argument and sets the page state to the value of the argument.
+  This function is called once a user clicks the "Go to Cart" or "Browse Products" button.
+  When the page state is set to "cart" the cart page is shown, when the page state is set to "products" the products page is shown.
+  */
   const navigateTo = (nextPage: string) => {
     setPage(nextPage);
   }
-
-  const renderProductsPage = () => (
-    <>
-      <h1>Products</h1>
-      <div className="products">
-        {products.map((product, index) => (
-          <div key={index}>
-            <h3>{product.name}</h3>
-            <h4>{product.cost}</h4>
-            <img src={product.image} alt={product.name} />
-            <button onClick={() => handleAddToCart(product)}>
-              Add to Cart
-            </button>
-          </div>
-        ))}
-      </div>
-    </>
-  );
 
   const renderCartPage = () => (
     <>
@@ -96,13 +66,17 @@ function App() {
     </>
   )
 
+
+  /*
+    Added logic to switch which page is shown based on the value of the page state.
+  */
   return (
     <div className="App">
       <header>
         <button onClick={() => navigateTo(CART_PAGE)}>Go to Cart ({cart.length})</button>
         <button onClick={() => navigateTo(PRODUCTS_PAGE)}>Browse Products</button>
       </header>
-      {page === PRODUCTS_PAGE && renderProductsPage()}
+      {page === PRODUCTS_PAGE && (<ProductItemCard handleAddToCart={handleAddToCart} />)}
       {page === CART_PAGE && renderCartPage()}
     </div>
   );
