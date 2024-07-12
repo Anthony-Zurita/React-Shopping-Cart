@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./App.css";
 import ProductItemCard from "./components/ProductItemCard";
+import CartItemCard from "./components/CartItemCard";
 
 const PRODUCTS_PAGE = "products";
 const CART_PAGE = "cart";
@@ -48,23 +49,6 @@ function App() {
     setPage(nextPage);
   }
 
-  const renderCartPage = () => (
-    <>
-      <h1>My Cart</h1>
-      <div className="products">
-        {cart.map((product, index) => (
-          <div key={index}>
-            <h3>{product.name}</h3>
-            <h4>{product.cost}</h4>
-            <img src={product.image} alt={product.name} />
-            <button onClick={() => handleRemoveFromCart(product)}>
-              Remove from Cart
-            </button>
-          </div>
-        ))}
-      </div>
-    </>
-  )
 
 
   /*
@@ -77,7 +61,7 @@ function App() {
         <button onClick={() => navigateTo(PRODUCTS_PAGE)}>Browse Products</button>
       </header>
       {page === PRODUCTS_PAGE && (<ProductItemCard handleAddToCart={handleAddToCart} />)}
-      {page === CART_PAGE && renderCartPage()}
+      {page === CART_PAGE && (<CartItemCard handleRemoveFromCart = {handleRemoveFromCart} cart = {cart}/>)}
     </div>
   );
 }
