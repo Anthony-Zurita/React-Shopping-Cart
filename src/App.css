@@ -1,9 +1,10 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 /* to format the products in a grid like fashion */
 .products{
+  text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 12lh;
@@ -38,4 +39,28 @@ button {
   color: white; /* Make text color white */
   font-weight: bold; /* Make text bold */
 }
+.typing-animation-text{
+  text-align:left !important;
+  padding: 10px 100px !important;
+  font-size: 40px;
+  font-weight: bold;
+  color: yellow;
+}
 
+.page-heading{
+  text-align:left;
+  color:white;
+  font-weight: bold;
+  padding: 50px 100px;
+  font-size: 50px;
+  text-shadow: 2px 2px 4px #888888; /* Slight gray shadow */
+}
+
+.description-text{
+  text-align:left;
+  color:white;
+  font-weight:normal;
+  padding: 10px 100px;
+  font-size: 20px;
+  max-width: 1000px;
+}
