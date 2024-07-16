@@ -97,6 +97,39 @@ function App() {
     setCart(cart.filter((product: CartItemType) => product !== productToBeRemoved));
   }
 
+
+/*
+  This function takes a product object and a number as arguments.
+  The function updates the quantity of a product in the cart array based on the value of the number argument.
+  The number argument increments or decrements by one when clicking + or - button.
+  This function is called once a user clicks the "+" or the "-" button.
+
+  We used reduce here instead of map becasue map always returns an array of the same length as the original array, while reduce 
+  gives the flexibility of building a new array from scratch
+
+  Calling the handleRemoveFromCart function with the product object as an argument will not remove the product from the cart array as
+  one might believe as it does not immediatetly affect the cart array created by map. Using reduce and simply not adding the item
+  to the newCart array if the quantity is 0 or less effectively removes the item from the cart array, which will remove the item from the
+  cart once it updates. 
+*/
+  const handleQuantityChange = (product: CartItemType, amtToChange: number) => {
+    setCart(cart.reduce((newCart: CartItemType[], item: CartItemType) => {
+      if (item.name === product.name) {
+        const newQuantity = item.quantity + amtToChange;
+        if (newQuantity <= 0) {
+          // Don't add the item to newCart if quantity is 0 or less, effectively removing it
+          return newCart;
+        }
+        // if the quantity is greater than 0, add the item to newCart along with the new quantity
+        return [...newCart, { ...item, quantity: newQuantity }];
+      }
+      // if the item is not the one being updated, add it to newCart making sure all items are processed not only item.name === product.name
+      return [...newCart, item];
+    }, []));
+  };
+
+
+
   /*
     The function clear cart removes all items within the cart by clearing the cart array and setting it to be an empty array.
   */
@@ -124,7 +157,7 @@ function App() {
         <Route path={"/"} element={<Home/>} />
         <Route path={"/products"} element={<ProductItemCard handleAddToCart={handleAddToCart} />} />
         
-        <Route path={"/mycart"} element={<CartItemCard handleRemoveFromCart = {handleRemoveFromCart} clearCart = {clearCart} cart = {cart} />} />
+        <Route path={"/mycart"} element={<CartItemCard cart = {cart} handleRemoveFromCart = {handleRemoveFromCart} clearCart = {clearCart}  handleQuantityChange={handleQuantityChange} />} />
       </Routes>
     </div>
     </BrowserRouter>

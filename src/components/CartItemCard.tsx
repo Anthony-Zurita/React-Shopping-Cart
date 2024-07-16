@@ -13,23 +13,29 @@ export default function CartItemCard({
   handleRemoveFromCart,
   clearCart,
   cart,
+  handleQuantityChange,
 }: {
   handleRemoveFromCart: (item: CartItemType) => void;
   clearCart: () => void;
   cart: CartItemType[];
+  handleQuantityChange: (product: CartItemType, amtToChange: number) => void;
 }) {
   /*
     The getTotalCartCost function calculates the total cost of all items in the cart array. It then returns it as a number with two 
     decimal places
   */
   const getTotalCartCost = () => {
-    const cartTotal = cart.reduce((total, { cost, quantity }) => total + cost*quantity, 0);
+    const cartTotal = cart.reduce(
+      (total, { cost, quantity }) => total + cost * quantity,
+      0
+    );
     return cartTotal.toFixed(2);
   };
 
   const getCartTotalQuantity = () => {
     return cart.reduce((total, { quantity }) => total + quantity, 0);
-  }
+  };
+  
 
   return (
     <>
@@ -52,7 +58,17 @@ export default function CartItemCard({
           <div key={index}>
             <h3>{product.name}</h3>
             <h4>${product.cost}</h4>
-            <h4>{product.quantity}</h4>
+
+            <div>
+              <button onClick={() => handleQuantityChange(product, -1)}>
+                -
+              </button>
+              <span>Quantity: {product.quantity}</span>
+              <button onClick={() => handleQuantityChange(product, 1)}>
+                +
+              </button>
+            </div>
+
             <img src={product.image} alt={product.name} />
             <button onClick={() => handleRemoveFromCart(product)}>
               Remove from Cart
