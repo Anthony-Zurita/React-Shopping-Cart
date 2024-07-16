@@ -123,6 +123,7 @@ function App() {
       <Routes>
         <Route path={"/"} element={<Home/>} />
         <Route path={"/products"} element={<ProductItemCard handleAddToCart={handleAddToCart} />} />
+        
         <Route path={"/mycart"} element={<CartItemCard handleRemoveFromCart = {handleRemoveFromCart} clearCart = {clearCart} cart = {cart} />} />
       </Routes>
     </div>
