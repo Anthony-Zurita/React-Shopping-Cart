@@ -11,6 +11,7 @@ const inventory: CartItemType[] = [
     name: "Rechargable Lantern",
     cost: 25.99,
     image: "https://m.media-amazon.com/images/I/71StlaTwNDL.jpg",
+    quantity: 1,
   },
 
   {
@@ -18,6 +19,7 @@ const inventory: CartItemType[] = [
     cost: 65.99,
     image:
       "https://m.media-amazon.com/images/I/71DPerT9EKL._AC_UF1000,1000_QL80_.jpg",
+    quantity: 1,
   },
 ];
 

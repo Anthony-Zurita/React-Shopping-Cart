@@ -31,6 +31,7 @@ export type CartItemType = {
   name: string;
   cost: number;
   image: string;
+  quantity: number;
 };
 
 function App() {
@@ -65,7 +66,26 @@ function App() {
   Product object is spread to create a new object in order to avoid mutating duplicates of the same.
   */
   const handleAddToCart = (product: CartItemType) => {
-    setCart([...cart, { ...product}]);
+    // newCart is a variable that stores a copy of the cart array.
+    let newCart = [...cart];
+    // itemInCart is a variable that stores the product object if it is found in the cart array.
+    let itemInCart = newCart.find((item: CartItemType) => product.name === item.name);
+
+    // If the product is found in the cart array, the quantity of the product is incremented by one.
+    if (itemInCart) {
+      itemInCart.quantity++;
+    }
+    // If the product is not found in the cart array, the product is added to the cart array with a quantity of 1.
+    else {
+      itemInCart = {
+        ...product,
+        quantity: 1,
+      };
+      // newCart is updated to include the new product object.
+      newCart.push(itemInCart);
+    }
+    // The cart state variable is updated with the newCart array
+    setCart(newCart);
   };
 
   /*

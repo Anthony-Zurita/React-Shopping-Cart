@@ -23,13 +23,17 @@ export default function CartItemCard({
     decimal places
   */
   const getTotalCartCost = () => {
-    const cartTotal = cart.reduce((totalSum, { cost }) => totalSum + cost, 0);
+    const cartTotal = cart.reduce((total, { cost, quantity }) => total + cost*quantity, 0);
     return cartTotal.toFixed(2);
   };
 
+  const getCartTotalQuantity = () => {
+    return cart.reduce((total, { quantity }) => total + quantity, 0);
+  }
+
   return (
     <>
-      <h1>My Cart ({cart.length})</h1>
+      <h1>My Cart ({getCartTotalQuantity()})</h1>
       {/* Used && operator to check if there are any items in the cart array. If there are exactly 0 items in the cart array, a message is shown
       to the user to encourage them to shop, otherwise it is not shown.*/}
       {cart.length === 0 && (
@@ -48,6 +52,7 @@ export default function CartItemCard({
           <div key={index}>
             <h3>{product.name}</h3>
             <h4>${product.cost}</h4>
+            <h4>{product.quantity}</h4>
             <img src={product.image} alt={product.name} />
             <button onClick={() => handleRemoveFromCart(product)}>
               Remove from Cart
