@@ -8,11 +8,23 @@ import { CartItemType } from "../App";
     function.
 */
 
-export default function CartItemCard( {handleRemoveFromCart, cart}: {handleRemoveFromCart: (item: CartItemType) => void; cart: CartItemType[];}
-) {
+export default function CartItemCard({
+  handleRemoveFromCart,
+  clearCart,
+  cart,
+}: {
+  handleRemoveFromCart: (item: CartItemType) => void;
+  clearCart: () => void;
+  cart: CartItemType[];
+}) {
   return (
     <>
       <h1>My Cart ({cart.length})</h1>
+      {/* Used && operator to check if there are any items in the cart array. If there are 0 items in the cart array, the Clear My Cart 
+      button is not shown. If there are items in the cart array, the Clear My Cart button is shown. */}
+      {cart.length > 0 && (
+        <button onClick={() => clearCart()}>Clear My Cart</button>
+      )}
       <div className="products">
         {cart.map((product, index) => (
           <div key={index}>

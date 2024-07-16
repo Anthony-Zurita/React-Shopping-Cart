@@ -78,6 +78,13 @@ function App() {
   }
 
   /*
+    The function clear cart removes all items within the cart by clearing the cart array and setting it to be an empty array.
+  */
+  const clearCart = () => {
+    setCart([]);
+  }
+
+  /*
   This function takes a string as an argument and sets the page state to the value of the argument.
   This function is called once a user clicks the "Go to Cart" or "Browse Products" button.
   When the page state is set to "cart" the cart page is shown, when the page state is set to "products" the products page is shown.
@@ -96,7 +103,7 @@ function App() {
       <Routes>
         <Route path={"/"} element={<Home/>} />
         <Route path={"/products"} element={<ProductItemCard handleAddToCart={handleAddToCart} />} />
-        <Route path={"/mycart"} element={<CartItemCard handleRemoveFromCart = {handleRemoveFromCart} cart = {cart}/>} />
+        <Route path={"/mycart"} element={<CartItemCard handleRemoveFromCart = {handleRemoveFromCart} clearCart = {clearCart} cart = {cart} />} />
       </Routes>
     </div>
     </BrowserRouter>
