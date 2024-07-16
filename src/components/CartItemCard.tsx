@@ -20,6 +20,12 @@ export default function CartItemCard({
   return (
     <>
       <h1>My Cart ({cart.length})</h1>
+      {cart.length === 0 && (
+        <p>
+          We See You Have Not Items In Your Cart. . . Browse our products to find
+          amazing deals!{" "}
+        </p>
+      )}
       {/* Used && operator to check if there are any items in the cart array. If there are 0 items in the cart array, the Clear My Cart 
       button is not shown. If there are items in the cart array, the Clear My Cart button is shown. */}
       {cart.length > 0 && (
