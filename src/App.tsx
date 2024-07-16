@@ -29,7 +29,7 @@ const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]');
 */
 export type CartItemType = {
   name: string;
-  cost: string;
+  cost: number;
   image: string;
 };
 

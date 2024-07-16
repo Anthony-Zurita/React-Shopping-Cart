@@ -12,13 +12,13 @@ import { CartItemType } from "../App";
 const inventory: CartItemType[] = [
   {
     name: "Rechargable Lantern",
-    cost: "$25.99",
+    cost: 25.99,
     image: "https://m.media-amazon.com/images/I/71StlaTwNDL.jpg",
   },
 
   {
     name: "Camping Tent",
-    cost: "$65.99",
+    cost: 65.99,
     image:
       "https://m.media-amazon.com/images/I/71DPerT9EKL._AC_UF1000,1000_QL80_.jpg",
   },
@@ -27,13 +27,13 @@ const inventory: CartItemType[] = [
 
   {
     name: "Full Camping Cookware Set",
-    cost: "$65.99",
+    cost: 65.99,
     image:
       "https://m.media-amazon.com/images/I/71DPerT9EKL._AC_UF1000,1000_QL80_.jpg",
   },
   {
     name: "Camping Stove Set",
-    cost: "$65.99",
+    cost: 65.99,
     image:
       "https://m.media-amazon.com/images/I/71DPerT9EKL._AC_UF1000,1000_QL80_.jpg",
   },
@@ -59,7 +59,7 @@ export default function ProductItemCard({handleAddToCart}: {handleAddToCart: (it
         {products.map((product, index) => (
           <div key={index}>
             <h3>{product.name}</h3>
-            <h4>{product.cost}</h4>
+            <h4>${product.cost}</h4>
             <img src={product.image} alt={product.name} />
             <button onClick={() => handleAddToCart(product)}>
               Add to Cart
