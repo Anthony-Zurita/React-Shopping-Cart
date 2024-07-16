@@ -1,4 +1,4 @@
-import { get } from "http";
+
 import { CartItemType } from "../App";
 
 /*
