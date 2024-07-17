@@ -57,7 +57,7 @@ export default function CartItemCard({
         {cart.map((product, index) => (
           <div key={index} className="cart-card">
             <h3 className="product-name">{product.name}</h3>
-            <h4>Price: ${product.cost}</h4>
+            <h4 className="product-cost">Price: ${product.cost}</h4>
 
             <div>
               <button className="minus-button" onClick={() => handleQuantityChange(product, -1)}>

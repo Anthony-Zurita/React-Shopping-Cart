@@ -14,22 +14,25 @@
 }
 
 .product-card ,.cart-card {
-  border: 2px solid #ccc; /* Add a border around the card */
-  padding: 20px; /* Add padding inside the card */
+  border: 4px solid #ccc; /* Add a border around the card */
+  padding-top: 20px; /* Add padding inside the card */
+  padding-bottom: 1.75px;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow for depth */
-  border-radius: 10px; /* Optional: Add rounded corners */
+  border-radius: 15px; /* Optional: Add rounded corners */
 }
 
 /* to format the images to fit better to the screen */
 .products img{
   width: 100%;
-  height: 75%;
+  height: 500px;
+  object-fit: cover;
+  padding: 25px 25px;
+
 }
 
 /* to format the buttons make them larger and the text larger */
 button {
-  font-size: 20px;
-  padding: 10px
+  font-size: 25px;
 }
 
 /* Styling for the nav bar links */
@@ -83,13 +86,22 @@ button {
   text-shadow: 1px 1px 2px #888888; /* Slight gray shadow */
 }
 
+.product-cost{
+  color:black;
+  text-align: center;
+  font-weight: normal;
+  padding: 10px 10px;
+  font-size: 30px;
+  text-shadow: 1px 1px 2px #888888; /* Slight gray shadow */
+}
+
 
 
 .cart-cost{
   color:black;
   text-align: left;
   font-weight: bold;
-  padding: 50px 100px;
+  padding: 10px 10px;
   font-size: 45px;
 }
 
@@ -135,11 +147,13 @@ button {
   border: 2px solid #d38558;
   box-shadow: 0px 5px 10px rgba(0,0,0,0.25);
   border-radius: 10px;
-  height: 40px;
+  height: 60px;
   margin: 20px 0;
   padding: 0 40px;
-  width: 100%;
+  width: 99.5%;
   margin-top: auto;
+
+  margin-bottom: 0;
 }
 
 .remove-from-cart:hover {
@@ -154,11 +168,13 @@ button {
   border: 2px solid #d38558;
   box-shadow: 0px 5px 10px rgba(0,0,0,0.25);
   border-radius: 10px;
-  height: 40px;
+  height: 60px;
   margin: 20px 0;
   padding: 0 40px;
-  width: 100%;
+  width: 99.5%;
   margin-top: auto;
+
+  margin-bottom: 0;
 }
 
 .add-cart-button:hover {
