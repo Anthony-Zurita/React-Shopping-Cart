@@ -4,13 +4,20 @@
 
 /* to format the products in a grid like fashion */
 .products{
-  background-color: #ec840d;
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 50px;
   row-gap: 30px;
+  width: 85%; /* Set width to 80% of the screen */
+  margin: 0 auto; /* Center the grid horizontally */
+}
 
+.product-card ,.cart-card {
+  border: 2px solid #ccc; /* Add a border around the card */
+  padding: 20px; /* Add padding inside the card */
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow for depth */
+  border-radius: 10px; /* Optional: Add rounded corners */
 }
 
 /* to format the images to fit better to the screen */
@@ -131,6 +138,8 @@ button {
   height: 40px;
   margin: 20px 0;
   padding: 0 40px;
+  width: 100%;
+  margin-top: auto;
 }
 
 .remove-from-cart:hover {
@@ -148,6 +157,8 @@ button {
   height: 40px;
   margin: 20px 0;
   padding: 0 40px;
+  width: 100%;
+  margin-top: auto;
 }
 
 .add-cart-button:hover {

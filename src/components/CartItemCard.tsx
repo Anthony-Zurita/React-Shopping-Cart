@@ -55,7 +55,7 @@ export default function CartItemCard({
       )}
       <div className="products">
         {cart.map((product, index) => (
-          <div key={index}>
+          <div key={index} className="cart-card">
             <h3 className="product-name">{product.name}</h3>
             <h4>Price: ${product.cost}</h4>
 

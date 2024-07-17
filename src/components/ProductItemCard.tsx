@@ -146,7 +146,7 @@ export default function ProductItemCard({handleAddToCart}: {handleAddToCart: (it
       <h1 className="product-cart-page-heading">Products</h1>
       <div className="products">
         {products.map((product, index) => (
-          <div key={index}>
+          <div key={index} className="product-card">
             <h3>{product.name}</h3>
             <h4>Price: ${product.cost}</h4>
             <img src={product.image} alt={product.name} />
