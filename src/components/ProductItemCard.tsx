@@ -143,14 +143,14 @@ export default function ProductItemCard({handleAddToCart}: {handleAddToCart: (it
 
   return (
     <>
-      <h1>Products</h1>
+      <h1 className="product-cart-page-heading">Products</h1>
       <div className="products">
         {products.map((product, index) => (
           <div key={index}>
             <h3>{product.name}</h3>
-            <h4>${product.cost}</h4>
+            <h4>Price: ${product.cost}</h4>
             <img src={product.image} alt={product.name} />
-            <button onClick={() => handleAddToCart(product)}>
+            <button className="add-cart-button" onClick={() => handleAddToCart(product)}>
               Add to Cart
             </button>
           </div>

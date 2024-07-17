@@ -39,45 +39,45 @@ export default function CartItemCard({
 
   return (
     <>
-      <h1>My Cart ({getCartTotalQuantity()})</h1>
+      <h1 className="product-cart-page-heading">My Cart ({getCartTotalQuantity()})</h1>
       {/* Used && operator to check if there are any items in the cart array. If there are exactly 0 items in the cart array, a message is shown
       to the user to encourage them to shop, otherwise it is not shown.*/}
       {cart.length === 0 && (
-        <p>
-          We See You Have Not Items In Your Cart. . . Browse our products to
+        <p className="cart-description-text">
+          We see that your cart is empty. . . . Browse our products to
           find amazing deals!{" "}
         </p>
       )}
       {/* Used && operator to check if there are any items in the cart array. If there are 0 items in the cart array, the Clear My Cart 
       button is not shown. If there are items in the cart array, the Clear My Cart button is shown. */}
       {cart.length > 0 && (
-        <button onClick={() => clearCart()}>Clear My Cart</button>
+        <button className="clear-cart" onClick={() => clearCart()}>Clear My Cart</button>
       )}
       <div className="products">
         {cart.map((product, index) => (
           <div key={index}>
-            <h3>{product.name}</h3>
-            <h4>${product.cost}</h4>
+            <h3 className="product-name">{product.name}</h3>
+            <h4>Price: ${product.cost}</h4>
 
             <div>
-              <button onClick={() => handleQuantityChange(product, -1)}>
+              <button className="minus-button" onClick={() => handleQuantityChange(product, -1)}>
                 -
               </button>
               <span>Quantity: {product.quantity}</span>
-              <button onClick={() => handleQuantityChange(product, 1)}>
+              <button className="plus-button" onClick={() => handleQuantityChange(product, 1)}>
                 +
               </button>
             </div>
 
             <img src={product.image} alt={product.name} />
-            <button onClick={() => handleRemoveFromCart(product)}>
+            <button className="remove-from-cart" onClick={() => handleRemoveFromCart(product)}>
               Remove from Cart
             </button>
           </div>
         ))}
       </div>
 
-      {cart.length > 0 && <h1>TOTAL COST: ${getTotalCartCost()}</h1>}
+      {cart.length > 0 && <h1 className="cart-cost">Total Cost: ${getTotalCartCost()}</h1>}
     </>
   );
 }
