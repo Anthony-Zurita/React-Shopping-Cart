@@ -12,8 +12,8 @@ const Home = () => {
       }}
     >
       <h1 className="page-heading">Welcome to <span style={{ color: 'yellow' }}>The Camp Store</span></h1>
-      <p className="description-text">
-        The Camp Store has all yuor needs covered! We have tents, sleeping bags,
+      <p className="thecampstore-description-text">
+        The Camp Store has all your needs covered! We have tents, sleeping bags,
         flashlights and lanterns, and camping cookware. Everything you need for
         your next camping trip! We provide the best quality products at the best
         prices. Shop now!

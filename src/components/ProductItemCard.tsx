@@ -12,7 +12,7 @@ const inventory: CartItemType[] = [
     name: "Green Camping Tent",
     cost: 55.99,
     image:
-      "https://m.media-amazon.com/images/I/71DPerT9EKL._AC_UF1000,1000_QL80_.jpg",
+      "https://target.scene7.com/is/image/Target/GUEST_ac1144d3-e07b-4746-85b2-bfe6a1acf30c?wid=488&hei=488&fmt=pjpeg",
     quantity: 1,
   },
 
@@ -47,7 +47,7 @@ const inventory: CartItemType[] = [
     quantity: 1,
   },
   {
-    name: "Tough Outdoor Lumberjack Sleeping Bag",
+    name: "Lumberjack Sleeping Bag",
     cost: 25.99,
     image:
       "https://m.media-amazon.com/images/I/61GIr6Dtm5L._AC_UF1000,1000_QL80_.jpg",
@@ -142,20 +142,20 @@ export default function ProductItemCard({handleAddToCart}: {handleAddToCart: (it
     const [products] = useState(inventory);
 
   return (
-    <>
-      <h1 className="product-cart-page-heading">Products</h1>
+    <div className="background-product">
+      <h1 className="product-page-heading">Products</h1>
       <div className="products">
         {products.map((product, index) => (
           <div key={index} className="product-card">
-            <h3>{product.name}</h3>
-            <h4>Price: ${product.cost}</h4>
             <img src={product.image} alt={product.name} />
+            <h3 className="product-name">{product.name}</h3>
+            <h4 className="product-cost">${product.cost}</h4>
             <button className="add-cart-button" onClick={() => handleAddToCart(product)}>
               Add to Cart
             </button>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }

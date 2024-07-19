@@ -38,12 +38,13 @@ export default function CartItemCard({
   
 
   return (
-    <>
-      <h1 className="product-cart-page-heading">My Cart ({getCartTotalQuantity()})</h1>
+    <div className="background-cart">
+    <div className="mycart-clearcart">
+      <h1 className="cart-page-heading">My Cart ({getCartTotalQuantity()})</h1>
       {/* Used && operator to check if there are any items in the cart array. If there are exactly 0 items in the cart array, a message is shown
       to the user to encourage them to shop, otherwise it is not shown.*/}
       {cart.length === 0 && (
-        <p className="cart-description-text">
+        <p className="cart-empty-text">
           We see that your cart is empty. . . . Browse our products to
           find amazing deals!{" "}
         </p>
@@ -53,31 +54,42 @@ export default function CartItemCard({
       {cart.length > 0 && (
         <button className="clear-cart" onClick={() => clearCart()}>Clear My Cart</button>
       )}
-      <div className="products">
-        {cart.map((product, index) => (
+      </div>
+
+      <div className="cart">
+        {cart.map((cart, index) => (
           <div key={index} className="cart-card">
-            <h3 className="product-name">{product.name}</h3>
-            <h4 className="product-cost">Price: ${product.cost}</h4>
+            <div className="cart-info-container">
+
+            <img src={cart.image} alt={cart.name} />
+
+            <div className="cart-info-stack">
+            <h3 className="cart-name">{cart.name}</h3>
+            <h4 className="cart-cost">${cart.cost}</h4>
+            
 
             <div>
-              <button className="minus-button" onClick={() => handleQuantityChange(product, -1)}>
+              <button className="minus-button" onClick={() => handleQuantityChange(cart, -1)}>
                 -
               </button>
-              <span>Quantity: {product.quantity}</span>
-              <button className="plus-button" onClick={() => handleQuantityChange(product, 1)}>
+              <span>Quantity: {cart.quantity}</span>
+              <button className="plus-button" onClick={() => handleQuantityChange(cart, 1)}>
                 +
               </button>
             </div>
+            </div>
+            </div>
 
-            <img src={product.image} alt={product.name} />
-            <button className="remove-from-cart" onClick={() => handleRemoveFromCart(product)}>
+            
+            <button className="remove-from-cart" onClick={() => handleRemoveFromCart(cart)}>
               Remove from Cart
             </button>
           </div>
         ))}
       </div>
-
-      {cart.length > 0 && <h1 className="cart-cost">Total Cost: ${getTotalCartCost()}</h1>}
-    </>
+      <div className="cart-cost-container">
+      {cart.length > 0 && <h1 className="total-cart-cost">Cart Cost: ${getTotalCartCost()}</h1>}
+    </div>
+    </div>
   );
 }

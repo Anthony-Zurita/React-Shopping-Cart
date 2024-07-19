@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <Navbar expand="lg" className="bg-primary larger-navbar">
       <Container>
-        <Navbar.Brand href="#home">THE CAMP STORE</Navbar.Brand>
+        <Navbar.Brand href="#home" style={{ color: 'yellow' }}>THE CAMP STORE</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
